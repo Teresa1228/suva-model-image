@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "defaults": {
+    "generateRecipe": "gen-default",
+    "editRecipe": "edit-plain",
+    "size": "1024x1024",
+    "pollIntervalMs": 3000,
+    "pollMax": 90
+  },
+  "models": {
+    "qwen21-turbo": {
+      "id": "Qwen/Qwen-Image-2.1-Turbo",
+      "family": "qwen-image-2.1",
+      "capabilities": [
+        "generate",
+        "edit"
+      ],
+      "maxImages": 1,
+      "sizes": [
+        "1024x1024"
+      ],
+      "cost": null
+    },
+    "qwen-edit-2509": {
+      "id": "Qwen/Qwen-Image-Edit-2509",
+      "family": "qwen-image-edit-2509",
+      "capabilities": [
+        "edit"
+      ],
+      "maxImages": 3,
+      "allowLoraField": false,
+      "cost": null
+    }
+  },
+  "loras": {
+    "refine-jewel": {
+      "id": "yuyou80/refine_jewel_qwen2.1",
+      "baseFamily": "qwen-image-2.1",
+      "trigger": "精修图片中的饰品",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style01": {
+      "id": "<填写真实魔搭ID:style01>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style02": {
+      "id": "<填写真实魔搭ID:style02>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style03": {
+      "id": "<填写真实魔搭ID:style03>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style04": {
+      "id": "<填写真实魔搭ID:style04>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style05": {
+      "id": "<填写真实魔搭ID:style05>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style06": {
+      "id": "<填写真实魔搭ID:style06>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style07": {
+      "id": "<填写真实魔搭ID:style07>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style08": {
+      "id": "<填写真实魔搭ID:style08>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style09": {
+      "id": "<填写真实魔搭ID:style09>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    },
+    "style10": {
+      "id": "<填写真实魔搭ID:style10>",
+      "baseFamily": "<填写训练基础模型家族>",
+      "trigger": "",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    }
+  },
+  "recipes": {
+    "gen-default": {
+      "mode": "generate",
+      "model": "qwen21-turbo"
+    },
+    "retouch-jewel": {
+      "mode": "edit",
+      "model": "qwen21-turbo",
+      "loras": [
+        "refine-jewel"
+      ],
+      "defaultPrompt": "保留原有材质、颜色与镶嵌结构",
+      "requireImage": true
+    },
+    "edit-plain": {
+      "mode": "edit",
+      "model": "qwen-edit-2509"
+    }
+  },
+  "recipeSets": {
+    "ten-styles": {
+      "mode": "generate",
+      "model": "qwen21-turbo",
+      "loras": [
+        "style01",
+        "style02",
+        "style03",
+        "style04",
+        "style05",
+        "style06",
+        "style07",
+        "style08",
+        "style09",
+        "style10"
+      ],
+      "delayMs": 5000,
+      "onError": "continue"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "suva-model-image",
+  "version": "0.2.0",
+  "description": "魔搭图片生成与珠宝精修 SDK 和 CLI",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": "./src/index.mjs",
+  "bin": {
+    "suva-model-image": "./bin/cli.mjs"
+  },
+  "files": [
+    "src",
+    "bin",
+    "GROK.md",
+    "config"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "UNLICENSED"
+}

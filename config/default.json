@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "defaults": {
+    "generateRecipe": "gen-default",
+    "editRecipe": "edit-plain",
+    "size": "1024x1024",
+    "pollIntervalMs": 3000,
+    "pollMax": 90
+  },
+  "models": {
+    "qwen21-turbo": {
+      "id": "Qwen/Qwen-Image-2.1-Turbo",
+      "family": "qwen-image-2.1",
+      "capabilities": ["generate", "edit"],
+      "maxImages": 1,
+      "sizes": ["1024x1024"],
+      "cost": null
+    },
+    "qwen-edit-2509": {
+      "id": "Qwen/Qwen-Image-Edit-2509",
+      "family": "qwen-image-edit-2509",
+      "capabilities": ["edit"],
+      "maxImages": 3,
+      "allowLoraField": false,
+      "cost": null
+    }
+  },
+  "loras": {
+    "refine-jewel": {
+      "id": "yuyou80/refine_jewel_qwen2.1",
+      "baseFamily": "qwen-image-2.1",
+      "trigger": "精修图片中的饰品",
+      "triggerMode": "prefix-newline",
+      "weight": 1
+    }
+  },
+  "recipes": {
+    "gen-default": { "mode": "generate", "model": "qwen21-turbo" },
+    "retouch-jewel": {
+      "mode": "edit",
+      "model": "qwen21-turbo",
+      "loras": ["refine-jewel"],
+      "defaultPrompt": "保留原有材质、颜色与镶嵌结构",
+      "requireImage": true
+    },
+    "edit-plain": { "mode": "edit", "model": "qwen-edit-2509" }
+  },
+  "recipeSets": {}
+}
